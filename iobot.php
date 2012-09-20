@@ -8,18 +8,20 @@ require __DIR__ . '/vendor/autoload.php';
 
 use Philip\Philip;
 use Philip\IRC\Response;
+use Symfony\Component\Process\Process;
 
 $config = array(
     "hostname"   => "irc.freenode.net",
     "servername" => "iostudio.com",
     "port"       => 6667,
-    "username"   => "ioBot",
-    "realname"   => "iostudio IRC Bot",
-    "nick"       => "iobot",
+    "username"   => "sismo",
+    "realname"   => "iostudio Sismo IRC Bot",
+    "nick"       => "io-sismo",
     "channels"   => array( '#iostudio-dev', '#iostudio-vip' ),
-    "admins"     => array( 'cubicle17' ),
+    "admins"     => array( 'druid628' ),
     "debug"      => false,
     "log"        => __DIR__ . '/iobot.log',
+    "sismo_dir"  => "/sismo"
 );
 
 // Create the bot, passing in configuration options
@@ -101,6 +103,22 @@ $bot->onChannel('/^\$(\w+)$/', function($request, $matches) {
     return Response::msg($request->getSource(), "Current $stock price: $price -- http://google.com/finance?q=$stock");
 });
 
+
+// Sismo
+$sismoCommandsArray = array( 'build' => "Building", 'status' => "Status of" );
+$bot->onChannel("/^!(build|status) \b([\w-_]+)\b/", function($request, $matches) use ($config, $sismoCommandsArray) {
+    // execute Sismo stuff
+    $sismo_func = ($matches[0] === "status") ? "output" : $matches[0];
+    $sismo_cmd = sprintf("php %s/sismo %s %s",  $config['sismo_dir'], $sismo_func, $matches[1]); 
+    $process = new Process($sismo_cmd);
+    $process->setTimeout(3600);
+    $process->run();
+
+    $output = "SISMO: " . $sismoCommandsArray[$matches[0]] . " $matches[1]";
+    $output .= ": " . $process->getOutput();
+
+    return Response::msg($request->getSource(), $output);
+});
 
 // Ready, set, go.
 $bot->run();
