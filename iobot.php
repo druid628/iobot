@@ -17,18 +17,17 @@ $config = array(
     "username"   => "sismo",
     "realname"   => "iostudio Sismo IRC Bot",
     "nick"       => "io-sismo",
-    "channels"   => array( '#iostudio-dev', '#iostudio-vip' ),
-    "admins"     => array( 'druid628' ),
+    "channels"   => array( '#bsd-ci', '#iostudio-dev', '#chattanoogaPHP' ),
+    "admins"     => array(  'druid628' ),
     "debug"      => false,
-    "log"        => __DIR__ . '/iobot.log',
-    "sismo_dir"  => "/sismo"
+    "log"        => __DIR__ . '/logs/iobot.log',
 );
 
 // Create the bot, passing in configuration options
 $bot = new Philip($config);
 
 // Load my plugins
-$bot->loadPlugins(array('Admin', 'SwearJar', 'ImageMe', 'CannedResponse'));
+$bot->loadPlugins(array('Admin', 'SwearJar', 'ImageMe', 'CannedResponse', 'Sismo'));
 
 
 // Say hi back to the nice people
@@ -124,21 +123,6 @@ $bot->onChannel('/^\$(\w+)$/', function($event) {
 });
 
 
-// Sismo
-$sismoCommandsArray = array( 'build' => "Building", 'status' => "Status of" );
-$bot->onChannel("/^!(build|status) \b([\w-_]+)\b/", function($request, $matches) use ($config, $sismoCommandsArray) {
-    // execute Sismo stuff
-    $sismo_func = ($matches[0] === "status") ? "output" : $matches[0];
-    $sismo_cmd = sprintf("php %s/sismo %s %s",  $config['sismo_dir'], $sismo_func, $matches[1]); 
-    $process = new Process($sismo_cmd);
-    $process->setTimeout(3600);
-    $process->run();
-
-    $output = "SISMO: " . $sismoCommandsArray[$matches[0]] . " $matches[1]";
-    $output .= ": " . $process->getOutput();
-
-    return Response::msg($request->getSource(), $output);
-});
 
 // Ready, set, go.
 $bot->run();
