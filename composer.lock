@@ -7,19 +7,20 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/epochblue/philip.git",
-                "reference": "cdcabd52aacb779447c276519b72664b51559a11"
+                "reference": "90a57532b740c417bb2b426996862f7556be01a8"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/epochblue/philip/zipball/cdcabd52aacb779447c276519b72664b51559a11",
-                "reference": "cdcabd52aacb779447c276519b72664b51559a11",
+                "url": "https://github.com/epochblue/philip/zipball/90a57532b740c417bb2b426996862f7556be01a8",
+                "reference": "90a57532b740c417bb2b426996862f7556be01a8",
                 "shasum": ""
             },
             "require": {
-                "php": ">=5.3.0",
-                "monolog/monolog": "1.2.*"
+                "monolog/monolog": "1.2.*",
+                "php": ">=5.3.3",
+                "symfony/event-dispatcher": "2.1.*"
             },
-            "time": "1346597520",
+            "time": "1349704597",
             "type": "library",
             "installation-source": "source",
             "autoload": {
@@ -40,6 +41,7 @@
             "description": "A Slim-inspired IRC bot framework",
             "homepage": "http://github.com/epochblue/philip",
             "keywords": [
+                "DSL",
                 "bot",
                 "irc"
             ]
@@ -69,7 +71,7 @@
                 "ext-amqp": "Allow sending log messages to an AMQP server (1.0+ required)",
                 "ext-mongo": "Allow sending log messages to a MongoDB server"
             },
-            "time": "2012-08-29 16:53:20",
+            "time": "2012-08-29 11:53:20",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -81,54 +83,44 @@
                 "psr-0": {
                     "Monolog": "src/"
                 }
-            },
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Jordi Boggiano",
-                    "email": "j.boggiano@seld.be",
-                    "homepage": "http://seld.be",
-                    "role": "Developer"
-                }
-            ],
-            "description": "Logging for PHP 5.3",
-            "homepage": "http://github.com/Seldaek/monolog",
-            "keywords": [
-                "log",
-                "logging"
-            ]
+            }
         },
         {
-            "name": "symfony/process",
-            "version": "dev-master",
-            "target-dir": "Symfony/Component/Process",
+            "name": "symfony/event-dispatcher",
+            "version": "v2.1.2",
+            "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
-                "url": "https://github.com/symfony/Process",
-                "reference": "fa844147f9f23dd952454cb6eeefac8c62cee3f4"
+                "url": "https://github.com/symfony/EventDispatcher",
+                "reference": "v2.1.2"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/Process/zipball/fa844147f9f23dd952454cb6eeefac8c62cee3f4",
-                "reference": "fa844147f9f23dd952454cb6eeefac8c62cee3f4",
+                "url": "https://github.com/symfony/EventDispatcher/zipball/v2.1.2",
+                "reference": "v2.1.2",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "1348035264",
+            "require-dev": {
+                "symfony/dependency-injection": "2.1.*"
+            },
+            "suggest": {
+                "symfony/dependency-injection": "2.1.*",
+                "symfony/http-kernel": "2.1.*"
+            },
+            "time": "2012-09-10 10:53:42",
             "type": "library",
             "extra": {
                 "branch-alias": {
-                    "dev-master": "2.2-dev"
+                    "dev-master": "2.1-dev"
                 }
             },
-            "installation-source": "source",
+            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
-                    "Symfony\\Component\\Process": ""
+                    "Symfony\\Component\\EventDispatcher": ""
                 }
             },
             "license": [
@@ -144,7 +136,7 @@
                     "homepage": "http://symfony.com/contributors"
                 }
             ],
-            "description": "Symfony Process Component",
+            "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com"
         }
     ],
