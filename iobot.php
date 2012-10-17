@@ -27,7 +27,12 @@ $config = array(
 $bot = new Philip($config);
 
 // Load my plugins
-$bot->loadPlugins(array('Admin', 'SwearJar', 'ImageMe', 'CannedResponse', 'Sismo'));
+$bot->loadPlugins(array(
+    'Philip\\Plugin\\AdminPlugin',
+    'Philip\\Plugin\\SwearJarPlugin',
+    'Philip\\Plugin\\ImageMePlugin',
+    'Philip\\Plugin\\CannedResponsePlugin'
+));
 
 
 // Say hi back to the nice people
@@ -92,13 +97,13 @@ $bot->onChannel("/^!fire([\s\w]+)?$/", function($event) use (&$fired, $config) {
 
 // Look for URLs, shame people who repost them.
 $urls  = array();
-$url_re = '/(((http|https):?\/\/)?(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,4}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})?=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?)/';
+$url_re = '/((http|https):?\/\/(([\d\w]|%[a-fA-f\d]{2,2})+(:([\d\w]|%[a-fA-f\d]{2,2})+)?@)?([\d\w][-\d\w]{0,253}[\d\w]\.)+[\w]{2,4}(:[\d]+)?(\/([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)*(\?(&?([-+_~.\d\w]|%[a-fA-f\d]{2,2})?=?)*)?(#([-+_~.\d\w]|%[a-fA-f\d]{2,2})*)?)/';
 $bot->onChannel($url_re, function($event) use (&$urls) {
     $matches = $event->getMatches();
     $request = $event->getRequest();
 
     $url = $matches[0];
-    $normal = rtrim(preg_replace("/https?:\/\/(www\.)?/", '', $url), '/');
+    $normal = rtrim(preg_replace('/(:?https?:\/\/)?(:?www\.)?/', '', $url), '/');
     $source = $request->getSource();
 
     if (isset($urls[$source]) && in_array($normal, array_keys($urls[$source]))) {
@@ -113,9 +118,9 @@ $bot->onChannel($url_re, function($event) use (&$urls) {
 
 
 // Stock prices
-$bot->onChannel('/^\$(\w+)$/', function($event) {
+$bot->onChannel('/^\$(\w+(\.\w+)?)$/', function($event) {
     $matches = $event->getMatches();
-    $stock = strtoupper($matches[0]);
+    $stock = strtoupper(str_replace('.', '-', $matches[0]));
     $price = trim(file_get_contents("http://download.finance.yahoo.com/d/quotes.csv?s=${stock}&f=b2"));
     $event->addResponse(
         Response::msg($event->getRequest()->getSource(), "Current $stock price: $price -- http://google.com/finance?q=$stock")

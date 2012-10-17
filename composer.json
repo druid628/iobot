@@ -2,6 +2,7 @@
     "require": {
         "epochblue/philip": "dev-master",
         "symfony/process": "dev-master"
+        "epochblue/philip-plugins": "dev-master"
     }
 }
 
