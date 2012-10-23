@@ -10,18 +10,7 @@ use Philip\Philip;
 use Philip\IRC\Response;
 use Symfony\Component\Process\Process;
 
-$config = array(
-    "hostname"   => "irc.freenode.net",
-    "servername" => "iostudio.com",
-    "port"       => 6667,
-    "username"   => "sismo",
-    "realname"   => "iostudio Sismo IRC Bot",
-    "nick"       => "io-sismo",
-    "channels"   => array( '#bsd-ci', '#iostudio-dev', '#chattanoogaPHP' ),
-    "admins"     => array(  'druid628' ),
-    "debug"      => false,
-    "log"        => __DIR__ . '/logs/iobot.log',
-);
+$config = require __DIR__ . '/config/config.php';
 
 // Create the bot, passing in configuration options
 $bot = new Philip($config);
@@ -31,7 +20,8 @@ $bot->loadPlugins(array(
     'Philip\\Plugin\\AdminPlugin',
     'Philip\\Plugin\\SwearJarPlugin',
     'Philip\\Plugin\\ImageMePlugin',
-    'Philip\\Plugin\\CannedResponsePlugin'
+    'Philip\\Plugin\\CannedResponsePlugin',
+    'Philip\\Plugin\\DarkSkyPlugin',
 ));
 
 

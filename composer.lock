@@ -1,18 +1,67 @@
 {
-    "hash": "8682ec010f8e8d111ebff2025267fa11",
+    "hash": "30b60793bb6b95127c720102ccb58c13",
     "packages": [
+        {
+            "name": "epochblue/darksky-php",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/epochblue/darksky-php",
+                "reference": "459159bbf38db8490710825095f428787ded7d6c"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://github.com/epochblue/darksky-php/zipball/459159bbf38db8490710825095f428787ded7d6c",
+                "reference": "459159bbf38db8490710825095f428787ded7d6c",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.2.0"
+            },
+            "time": "1350919243",
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
+            "installation-source": "source",
+            "autoload": {
+                "psr-0": {
+                    "DarkSky": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Bill Israel",
+                    "email": "bill.israel@gmail.com",
+                    "homepage": "http://billisrael.info/"
+                }
+            ],
+            "description": "A PHP wrapper for the DarkSky developer API",
+            "homepage": "https://www.github.com/epochblue/darksky-php",
+            "keywords": [
+                "api",
+                "weather",
+                "darksky",
+                "dark sky"
+            ]
+        },
         {
             "name": "epochblue/philip",
             "version": "dev-master",
             "source": {
                 "type": "git",
                 "url": "https://github.com/epochblue/philip.git",
-                "reference": "85eaa9268edd2d68f21036e6c66c542da81f77f4"
+                "reference": "76169badd697cdec81ec535a15050f95097f1de3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/epochblue/philip/zipball/85eaa9268edd2d68f21036e6c66c542da81f77f4",
-                "reference": "85eaa9268edd2d68f21036e6c66c542da81f77f4",
+                "url": "https://github.com/epochblue/philip/zipball/76169badd697cdec81ec535a15050f95097f1de3",
+                "reference": "76169badd697cdec81ec535a15050f95097f1de3",
                 "shasum": ""
             },
             "require": {
@@ -20,8 +69,13 @@
                 "php": ">=5.3.3",
                 "symfony/event-dispatcher": "2.1.*"
             },
-            "time": "1350220409",
+            "time": "1350918922",
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "installation-source": "source",
             "autoload": {
                 "psr-0": {
@@ -35,11 +89,11 @@
                 {
                     "name": "Bill Israel",
                     "email": "bill.israel@gmail.com",
-                    "homepage": "http://cubicle17.com/"
+                    "homepage": "http://billisrael.info/"
                 }
             ],
             "description": "A Slim-inspired IRC bot framework",
-            "homepage": "http://github.com/epochblue/philip",
+            "homepage": "https://github.com/epochblue/philip",
             "keywords": [
                 "DSL",
                 "bot",
@@ -52,20 +106,26 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/epochblue/philip-plugins.git",
-                "reference": "e4c5b2ca1f24b15e33ea0b2512f116780531d32e"
+                "reference": "b81c431b39e35f8db5284a7d48ac6a64d9879dbd"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/epochblue/philip-plugins/zipball/e4c5b2ca1f24b15e33ea0b2512f116780531d32e",
-                "reference": "e4c5b2ca1f24b15e33ea0b2512f116780531d32e",
+                "url": "https://github.com/epochblue/philip-plugins/zipball/b81c431b39e35f8db5284a7d48ac6a64d9879dbd",
+                "reference": "b81c431b39e35f8db5284a7d48ac6a64d9879dbd",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3",
-                "epochblue/philip": "dev-master"
+                "epochblue/philip": "dev-master",
+                "epochblue/darksky-php": "dev-master"
             },
-            "time": "1350220614",
+            "time": "1350942190",
             "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0.x-dev"
+                }
+            },
             "installation-source": "source",
             "autoload": {
                 "psr-0": {
@@ -79,11 +139,11 @@
                 {
                     "name": "Bill Israel",
                     "email": "bill.israel@gmail.com",
-                    "homepage": "http://cubicle17.com/"
+                    "homepage": "http://billisrael.info/"
                 }
             ],
             "description": "Plugins for the Philip IRC bot",
-            "homepage": "http://github.com/epochblue/philip-plugins",
+            "homepage": "https://github.com/epochblue/philip-plugins",
             "keywords": [
                 "plugins",
                 "plugin",
@@ -150,17 +210,17 @@
         },
         {
             "name": "symfony/event-dispatcher",
-            "version": "v2.1.2",
+            "version": "2.1.x-dev",
             "target-dir": "Symfony/Component/EventDispatcher",
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/EventDispatcher",
-                "reference": "v2.1.2"
+                "reference": "fb273317c0505ba657aa3d727530d36ae671fb82"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://github.com/symfony/EventDispatcher/zipball/v2.1.2",
-                "reference": "v2.1.2",
+                "url": "https://github.com/symfony/EventDispatcher/zipball/fb273317c0505ba657aa3d727530d36ae671fb82",
+                "reference": "fb273317c0505ba657aa3d727530d36ae671fb82",
                 "shasum": ""
             },
             "require": {
@@ -173,14 +233,14 @@
                 "symfony/dependency-injection": "2.1.*",
                 "symfony/http-kernel": "2.1.*"
             },
-            "time": "2012-09-10 03:53:42",
+            "time": "1349363877",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-master": "2.1-dev"
                 }
             },
-            "installation-source": "dist",
+            "installation-source": "source",
             "autoload": {
                 "psr-0": {
                     "Symfony\\Component\\EventDispatcher": ""
@@ -207,7 +267,7 @@
     "aliases": [
 
     ],
-    "minimum-stability": "stable",
+    "minimum-stability": "dev",
     "stability-flags": {
         "epochblue/philip": 20,
         "symfony/process": 20
